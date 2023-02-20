@@ -18,9 +18,9 @@ function findDiff(str1, str2) {
   }
 }
 
-function printSection(string, index, ellipse=true, before=10, after=10) {
+function printSection(string, index, ellipse = true, before = 10, after = 10) {
   let ret = '';
-  const start = Math.max(index-before, 0);
+  const start = Math.max(index - before, 0);
   const end = index + after;
   if (ellipse && start !== 0) {
     ret += '...';
@@ -36,12 +36,12 @@ export function Puzzle({ level_data }) {
   const [userRegex, setUserRegex] = useState("");
   const [userSubst, setUserSubst] = useState("");
   const [answerText, setAnswerText] = useState("");
-  const example_answer = level_data.original_text.replace(level_data.answer1_example[0], level_data.answer1_example[1]);
+  const example_answer = level_data.original_text.replaceAll(level_data.answer1_example[0], level_data.answer1_example[1]);
   const handleAnswerButtonClick = () => {
-    const answer = level_data.original_text.replace(userRegex, userSubst);
+    const answer = level_data.original_text.replaceAll(RegExp(userRegex, "g"), userSubst);
 
     if (answer.match(level_data.answer2)) {
-      setAnswerText ((
+      setAnswerText((
         <>
           <h1 className="header">{level_data.response2}</h1>
           <br />
@@ -57,10 +57,9 @@ export function Puzzle({ level_data }) {
       ));
     }
     else {
-      const answer = level_data.original_text.replace(userRegex, userSubst);
       const answer_diff = findDiff(answer, example_answer);
       const explanation_url = `https://regexr.com/?expression=${encodeURIComponent(userRegex)}&text=${encodeURIComponent(printSection(level_data.original_text, answer_diff, false))}&tool=replace&input=${encodeURIComponent(userSubst)}`
-      setAnswerText ((
+      setAnswerText((
         <>
           <h1 className="header">Original: {printSection(level_data.original_text, answer_diff)}</h1>
           <h1 className="header">Expected: {printSection(example_answer, answer_diff)}</h1>
@@ -73,7 +72,7 @@ export function Puzzle({ level_data }) {
 
   return (
     <>
-      <h1 className="header">A bad name</h1>
+      <h1 className="header">{level_data.title}</h1>
       <div className="app">
         <p>
           {level_data.prompt}
