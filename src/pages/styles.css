@@ -7,7 +7,7 @@ body {
 }
 
 * {
-  color: #00ffff;
+  color: #000000;
 }
 
 body {
@@ -25,7 +25,7 @@ body {
 }
 
 .app {
-  background: linear-gradient(5deg, #ff961d 0%, #f71aa2 100%);
+  background: linear-gradient(5deg, #ff341d 0%, #ef6c00 100%);
   width: 95%;
   height: min-content;
   border-radius: 15px;
@@ -69,9 +69,9 @@ body {
 
 button {
   width: 100%;
-  font-size: 16px;
-  color: #00ffff;
-  background: linear-gradient(#ff961d 0%, #f71aa2 100%);
+  font-size: 24px;
+  color: #000000;
+  background: linear-gradient(#ff341d 0%, #ef6c00 100%);
   border-radius: 15px;
   display: flex;
   padding: 5px;
