@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route}
 import Home from './pages';
 import Lovers from './pages/lovers';
 import Fool from './pages/fool';
-  
+
 function App() {
 return (
     <Router>
@@ -20,5 +20,5 @@ return (
     </Router>
 );
 }
-  
+
 export default App;
