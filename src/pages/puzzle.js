@@ -35,10 +35,12 @@ function printSection(string, index, ellipse = true, before = 10, after = 10) {
 export function Puzzle({ level_data }) {
   const [userRegex, setUserRegex] = useState("");
   const [userSubst, setUserSubst] = useState("");
+  const [modifiedText, setModifiedText] = useState("");
   const [answerText, setAnswerText] = useState("");
   const example_answer = level_data.original_text.replaceAll(level_data.answer1_example[0], level_data.answer1_example[1]);
   const handleAnswerButtonClick = () => {
     const answer = level_data.original_text.replaceAll(RegExp(userRegex, "g"), userSubst);
+    setModifiedText(answer);
 
     if (answer.match(level_data.answer2)) {
       setAnswerText((
@@ -82,6 +84,12 @@ export function Puzzle({ level_data }) {
           <br />
           <br />
           [Hint]: {level_data.hint}
+          <br />
+          <br />
+          [Source]: {level_data.original_text}
+          <br />
+          <br />
+          [Modified]: {modifiedText}
         </p>
       </div>
 
